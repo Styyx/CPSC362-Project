@@ -1,9 +1,23 @@
 import mysql.connector
 from mysql.connector import Error
-from Tkinter import Tk, Label, Entry, Button, E, W
+from tkinter import Tk, Label, Entry, Button, E, W
 
+def teacherLogin():
+    screen1 = Toplevel(my_gui)
+    screen1.title("Teacher Login")
+    screen1.geometry("300x250")
+
+    username = StringVar()
+    password = StringVar()
+
+    Label(text = "Username * ").pack()
+    Entry(textvariable = username)
+    Label(text = "Password * ").pack()
+    Entry(textvariable = password)
+    
 class logscreen:
     def __init__(self, master):
+        
         self.master = master
         master.title("Books Advantage Web App")
 
@@ -16,7 +30,7 @@ class logscreen:
         #self.text2 = Label(master, text="password")
         
         self.student_login_button = Button(master, text="Student Login")
-        self.teacher_login_button = Button(master, text="Teacher Login")
+        self.teacher_login_button = Button(master, text="Teacher Login", command = teacherLogin)
         self.account_register = Button(master, text="Register Account")
 
         self.title.grid(row=0, column=0, sticky=W)
@@ -31,11 +45,13 @@ class logscreen:
     def login(self):
         print("~")
 
+
+
 try:
     conn = mysql.connector.connect(host='127.0.0.1',
-                             database='test',
+                             database='student',
                              user='root',
-                             password='123')
+                             password='password')
     if conn.is_connected():
         db_Info = conn.get_server_info()
         print("Connected to MySQL database... MySQL Server version on ",db_Info)
@@ -66,7 +82,8 @@ finally:
         cursor.close()
         conn.close()
         print("MySQL connection is closed")
-
+        
+global my_gui
 root = Tk()
 my_gui = logscreen(root)
 root.mainloop()
