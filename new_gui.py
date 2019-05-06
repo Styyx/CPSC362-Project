@@ -50,7 +50,6 @@ def regAccPg():
     cPassword.pack()
     regStuBtn.pack()
     regTeaBtn.pack()
-    regAdminBtn.pack()
     regAccCancelBtn.pack()
     
 
@@ -99,7 +98,6 @@ def regAccCancel():
     cPassword.pack_forget()
     regStuBtn.pack_forget()
     regTeaBtn.pack_forget()
-    regAdminBtn.pack_forget()
     regAccCancelBtn.pack_forget()
     stuLoginPgBtn.pack()
     teaLoginPgBtn.pack()
@@ -107,6 +105,9 @@ def regAccCancel():
     regAccPgBtn.pack()
 
 def stuLogin():
+    #ideally we have some login verification programmed here
+    #if the email and password fields are correct we continue to execute the code
+    #if not we DO NOT execute the following code
     emaillabel.pack_forget()
     email.pack_forget()
     passwordlabel.pack_forget()
@@ -117,6 +118,9 @@ def stuLogin():
     stuLogoutBtn.pack()
 
 def teaLogin():
+    #ideally we have some login verification programmed here
+    #if the email and password fields are correct we continue to execute the code
+    #if not we DO NOT execute the following code
     emaillabel.pack_forget()
     email.pack_forget()
     passwordlabel.pack_forget()
@@ -127,6 +131,9 @@ def teaLogin():
     teaLogoutBtn.pack()
 
 def adminLogin():
+    #ideally we have some login verification programmed here
+    #if the email and password fields are correct we continue to execute the code
+    #if not we DO NOT execute the following code
     emaillabel.pack_forget()
     email.pack_forget()
     passwordlabel.pack_forget()
@@ -169,7 +176,7 @@ def adminLogout():
 
 window = tkinter.Tk()
 
-#the following buttons need logic assigned to them, stuLoginBtn, teaLoginBtn, regStuBtn, and regTeaBtn
+#the following buttons need logic assigned to them, stuLoginBtn, teaLoginBtn, adminLoginBtn regStuBtn, and regTeaBtn
 
 stuLoginPgBtn = tkinter.Button(window, text="Student Login", command=stuLoginPg)
 teaLoginPgBtn = tkinter.Button(window, text="Teacher Login", command=teaLoginPg)
@@ -194,9 +201,9 @@ regTeaBtn = tkinter.Button(window, text="Register as Teacher")
 regAdminBtn =tkinter.Button(window, text="Register as Admin")
 
 
-email = Entry(window)
+email = Entry(window) #this is the variable containing the email field
 emaillabel = tkinter.Label(window, text="Email:")
-password = Entry(window)
+password = Entry(window, show="*") #this is the variable containing the password field
 passwordlabel = tkinter.Label(window, text="Password:")
 cPassword = Entry(window)
 cPasswordLabel = tkinter.Label(window, text="Confirm Password:")
@@ -209,3 +216,4 @@ stuLoginPgBtn.pack()
 teaLoginPgBtn.pack()
 adminLoginPgBtn.pack()
 regAccPgBtn.pack()
+
