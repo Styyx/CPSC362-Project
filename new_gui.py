@@ -163,8 +163,34 @@ def adminLogin():
     password.pack_forget()
     adminLoginBtn.pack_forget()
     adminCancelBtn.pack_forget()
-    adminPg.pack()
-    adminLogoutBtn.pack()
+    adminPg.grid(row=0,column=0)
+    adminLogoutBtn.grid(row=0, column=3)
+    studentNameLabel.grid(row=1, column=0)
+    studentName1Label.grid(row=2, column=0)
+    studentName2Label.grid(row=3, column=0)
+    studentName3Label.grid(row=4, column=0)
+    studentName4Label.grid(row=5, column=0)
+    studentName5Label.grid(row=6, column=0)
+    if stuQ1 == True:
+        stuDQButton1.grid(row=2, column=2)
+    else:
+        stuQButton1.grid(row=2, column=1)
+    if stuQ2 == True:
+        stuDQButton2.grid(row=3, column=2)
+    else:
+        stuQButton2.grid(row=3, column=1)
+    if stuQ3 == True:
+        stuDQButton3.grid(row=4, column=2)
+    else:
+        stuQButton3.grid(row=4, column=1)
+    if stuQ4 == True:
+        stuDQButton4.grid(row=5, column=2)
+    else:
+        stuQButton4.grid(row=5, column=1)
+    if stuQ5 == True:
+        stuDQButton5.grid(row=6, column=2)
+    else:
+        stuQButton5.grid(row=6, column=1)
 
 def stuLogout():
     stuPg.pack_forget()
@@ -196,8 +222,59 @@ def adminLogout():
     email.pack()
     passwordlabel.pack()
     password.pack()
-    adminLoginBtn.pack()
-    adminCancelBtn.pack()
+    adminLoginBtn.grid_forget()
+    adminCancelBtn.grid_forget()
+
+def stuQButton1():
+    #have logic here that changes the first student's qualification status to "Qualifed"
+    stuQButton1.grid_forget()
+    stuDQButton1.grid(row=2,column=2)
+
+def stuDQButton1():
+    #have logic here that changes the first student's qualification status to "Disqualifed"
+    stuDQButton1.grid_forget()
+    stuQButton1.grid(row=2,column=1)
+
+def stuQButton2():
+    #have logic here that changes the second student's qualification status to "Qualifed"
+    stuQButton2.grid_forget()
+    stuDQButton2.grid(row=3,column=2)
+
+def stuDQButton2():
+    #have logic here that changes the second student's qualification status to "Disqualifed"
+    stuDQButton2.grid_forget()
+    stuQButton2.grid(row=3,column=1)
+
+def stuQButton3():
+    #have logic here that changes the third student's qualification status to "Qualifed"
+    stuQButton3.grid_forget()
+    stuDQButton3.grid(row=4,column=2)
+
+def stuDQButton3():
+    #have logic here that changes the third student's qualification status to "Disqualifed"
+    stuDQButton3.grid_forget()
+    stuQButton3.grid(row=4, column=1)
+
+def stuQButton4():
+    #have logic here that changes the fourth student's qualification status to "Qualifed"
+    stuQButton4.grid_forget()
+    stuDQButton4.grid(row=5, column=2)
+
+def stuDQButton4():
+    #have logic here that changes the fourth student's qualification status to "Disqualifed"
+    stuDQButton4.grid_forget()
+    stuQButton4.grid(row=5, column=1)
+
+def stuQButton5():
+    #have logic here that changes the fifth student's qualification status to "Qualifed"
+    stuQButton5.grid_forget()
+    stuDQButton5.grid(row=6, column=2)
+
+def stuDQButton5():
+    #have logic here that changes the fifth student's qualification status to "Disqualifed"
+    stuDQButton5.grid_forget()
+    stuQButton5.grid(row=6, column=1)
+    
 
 #this is the function that will contain the logic for registering a Student, feel free to delete the print statement, I just put it there so the module would run during my testing
 def regStu():
@@ -233,6 +310,29 @@ regAccCancelBtn = tkinter.Button(window, text="Cancel", bg="yellow", fg="black",
 regStuBtn = tkinter.Button(window, text="Register as Student", bg="red", fg="white", command=regStu) 
 regTeaBtn = tkinter.Button(window, text="Register as Teacher", bg="green", fg="black", command=regTea)
 
+studentNameLabel = tkinter.Label(window, text="Student Name")
+stuQButton1 = tkinter.Button(window, text="Qualify", bg="blue", fg="white", command=stuQButton1)
+stuDQButton1 = tkinter.Button(window, text="Disqualify", bg="red", fg="white", command=stuDQButton1)
+stuQButton2 = tkinter.Button(window, text="Qualify", bg="blue", fg="white", command=stuQButton2)
+stuDQButton2 = tkinter.Button(window, text="Disqualify", bg="red", fg="white", command=stuDQButton2)
+stuQButton3 = tkinter.Button(window, text="Qualify", bg="blue", fg="white", command=stuQButton3)
+stuDQButton3 = tkinter.Button(window, text="Disqualify", bg="red", fg="white", command=stuDQButton3)
+stuQButton4 = tkinter.Button(window, text="Qualify", bg="blue", fg="white", command=stuQButton4)
+stuDQButton4 = tkinter.Button(window, text="Disqualify", bg="red", fg="white", command=stuDQButton4)
+stuQButton5 = tkinter.Button(window, text="Qualify", bg="blue", fg="white", command=stuQButton5)
+stuDQButton5 = tkinter.Button(window, text="Disqualify", bg="red", fg="white", command=stuDQButton5)
+#variables containing the verification status of the students
+stuQ1 = False
+stuQ2 = False
+stuQ3 = False
+stuQ4 = False
+stuQ5 = False
+studentName1Label = tkinter.Label(window, text="Placeholder 1")
+studentName2Label = tkinter.Label(window, text="Placeholder 2")
+studentName3Label = tkinter.Label(window, text="Placeholder 3")
+studentName4Label = tkinter.Label(window, text="Placeholder 4")
+studentName5Label = tkinter.Label(window, text="Placeholder 5")
+
 email = Entry(window) #this is the variable containing the email field
 emaillabel = tkinter.Label(window, text="Email:")
 password = Entry(window, show="*") #this is the variable containing the password field
@@ -242,11 +342,11 @@ cPasswordLabel = tkinter.Label(window, text="Confirm Password:")
 fullname = Entry(window)
 fullnameLabel = tkinter.Label(window, text= "Full Name:")
 
-studentName = "placeholder" #this is the variable containing the student logging in
+studentName = "placeholder" #this is the variable containing the name of the student logging in
 stuPg = tkinter.Label(window, text="Welcome %s" % (studentName))
-teacherName = "placeholder" #this is the variable containing the teacher logging in
+teacherName = "placeholder" #this is the variable containing the name of the teacher logging in
 teaPg = tkinter.Label(window, text="Welcome %s" % (teacherName))
-adminName = "placeholder" #this is the variable containing the admin logging in
+adminName = "placeholder" #this is the variable containing the name of the admin logging in
 adminPg = tkinter.Label(window, text="Welcome %s" % (adminName))
 
 logo= tkinter.PhotoImage(file ="books.png")
