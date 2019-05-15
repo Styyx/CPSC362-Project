@@ -142,6 +142,7 @@ def teaLogin():
     #ideally we have some login verification programmed here
     #if the email and password fields are correct we continue to execute the code
     #if not we DO NOT execute the following code
+    #There are now variables later in the code that need to be set depending on the teacher loggin in, these variables are for if they're teaching course 1/2/3/4/5?
     teacherSplash.pack_forget()
     emaillabel.pack_forget()
     email.pack_forget()
@@ -149,8 +150,39 @@ def teaLogin():
     password.pack_forget()
     teaLoginBtn.pack_forget()
     teaCancelBtn.pack_forget()
-    teaPg.pack()
-    teaLogoutBtn.pack()
+    teaPg.grid(row=0, column=0)
+    teaLogoutBtn.grid(row=0, column=3)
+    coursesNameLabel.grid(row=1, column=0)
+    courseName1Label.grid(row=2,column=0)
+    courseName2Label.grid(row=3,column=0)
+    courseName3Label.grid(row=4,column=0)
+    courseName4Label.grid(row=5,column=0)
+    courseName5Label.grid(row=6,column=0)
+    if isTeachingC1 == True:
+        if courseQ1 == True:
+            courseDQButton1.grid(row=2, column=2)
+        else:
+            courseQButton1.grid(row=2, column=1)
+    if isTeachingC2 == True:
+        if courseQ2 == True:
+            courseDQButton2.grid(row=3, column=2)
+        else:
+            courseQButton2.grid(row=3, column=1)
+    if isTeachingC3 == True:
+        if courseQ3 == True:
+            courseDQButton3.grid(row=4, column=2)
+        else:
+            courseQButton3.grid(row=4, column=1)
+    if isTeachingC4 == True:
+        if courseQ4 == True:
+            courseDQButton4.grid(row=5, column=2)
+        else:
+            courseQButton4.grid(row=5, column=1)
+    if isTeachingC5 == True:
+        if courseQ5 == True:
+            courseDQButton5.grid(row=6, column=2)
+        else:
+            courseQButton5.grid(row=6, column=1)
 
 def adminLogin():
     #ideally we have some login verification programmed here
@@ -204,8 +236,24 @@ def stuLogout():
     stuCancelBtn.pack()
 
 def teaLogout():
-    teaPg.pack_forget()
-    teaLogoutBtn.pack_forget()
+    teaPg.grid_forget()
+    teaLogoutBtn.grid_forget()
+    coursesNameLabel.grid_forget()
+    courseName1Label.grid_forget()
+    courseName2Label.grid_forget()
+    courseName3Label.grid_forget()
+    courseName4Label.grid_forget()
+    courseName5Label.grid_forget()
+    courseQButton1.grid_forget()
+    courseDQButton1.grid_forget()
+    courseQButton2.grid_forget()
+    courseDQButton2.grid_forget()
+    courseQButton3.grid_forget()
+    courseDQButton3.grid_forget()
+    courseQButton4.grid_forget()
+    courseDQButton4.grid_forget()
+    courseQButton5.grid_forget()
+    courseDQButton5.grid_forget()
     teacherSplash.pack()
     emaillabel.pack()
     email.pack()
@@ -215,15 +263,31 @@ def teaLogout():
     teaCancelBtn.pack()
 
 def adminLogout():
-    adminPg.pack_forget()
-    adminLogoutBtn.pack_forget()
+    adminPg.grid_forget()
+    adminLogoutBtn.grid_forget()
+    studentNameLabel.grid_forget()
+    studentName1Label.grid_forget()
+    studentName2Label.grid_forget()
+    studentName3Label.grid_forget()
+    studentName4Label.grid_forget()
+    studentName5Label.grid_forget()
+    stuQButton1.grid_forget()
+    stuDQButton1.grid_forget()
+    stuQButton2.grid_forget()
+    stuDQButton2.grid_forget()
+    stuQButton3.grid_forget()
+    stuDQButton3.grid_forget()
+    stuQButton4.grid_forget()
+    stuDQButton4.grid_forget()
+    stuQButton5.grid_forget()
+    stuDQButton5.grid_forget()
     adminSplash.pack()
     emaillabel.pack()
     email.pack()
     passwordlabel.pack()
     password.pack()
-    adminLoginBtn.grid_forget()
-    adminCancelBtn.grid_forget()
+    adminLoginBtn.pack()
+    adminCancelBtn.pack()
 
 def stuQButton1():
     #have logic here that changes the first student's qualification status to "Qualifed"
@@ -274,6 +338,56 @@ def stuDQButton5():
     #have logic here that changes the fifth student's qualification status to "Disqualifed"
     stuDQButton5.grid_forget()
     stuQButton5.grid(row=6, column=1)
+
+def courseQButton1():
+    #needs an SQL statement the qualifies the first course for the program
+    courseQButton1.grid_forget()
+    courseDQButton1.grid(row=2, column=2)
+
+def courseDQButton1():
+    #needs an SQL statement the disqualifies the first course for the program
+    courseDQButton1.grid_forget()
+    courseQButton1.grid(row=2, column=1)
+
+def courseQButton2():
+    #needs an SQL statement the qualifies the second course for the program
+    courseQButton2.grid_forget()
+    courseDQButton2.grid(row=3, column=2)
+
+def courseDQButton2():
+    #needs an SQL statement the disqualifies the second course for the program
+    courseDQButton2.grid_forget()
+    courseQButton2.grid(row=3, column=1)
+
+def courseQButton3():
+    #needs an SQL statement the qualifies the third course for the program
+    courseQButton3.grid_forget()
+    courseDQButton3.grid(row=4, column=2)
+
+def courseDQButton3():
+    #needs an SQL statement the disqualifies the third course for the program
+    courseDQButton3.grid_forget()
+    courseQButton3.grid(row=4, column=1)
+
+def courseQButton4():
+    #needs an SQL statement the qualifies the fourth course for the program
+    courseQButton4.grid_forget()
+    courseDQButton4.grid(row=5, column=2)
+
+def courseDQButton4():
+    #needs an SQL statement the disqualifies the fourth course for the program
+    courseDQButton4.grid_forget()
+    courseQButton4.grid(row=5, column=1)
+
+def courseQButton5():
+    #needs an SQL statement the qualifies the fifth course for the program
+    courseQButton5.grid_forget()
+    courseDQButton5.grid(row=6, column=2)
+
+def courseDQButton5():
+    #needs an SQL statement the disqualifies the fifth course for the program
+    courseDQButton5.grid_forget()
+    courseQButton5.grid(row=6, column=1)
     
 
 #this is the function that will contain the logic for registering a Student, feel free to delete the print statement, I just put it there so the module would run during my testing
@@ -321,7 +435,7 @@ stuQButton4 = tkinter.Button(window, text="Qualify", bg="blue", fg="white", comm
 stuDQButton4 = tkinter.Button(window, text="Disqualify", bg="red", fg="white", command=stuDQButton4)
 stuQButton5 = tkinter.Button(window, text="Qualify", bg="blue", fg="white", command=stuQButton5)
 stuDQButton5 = tkinter.Button(window, text="Disqualify", bg="red", fg="white", command=stuDQButton5)
-#variables containing the verification status of the students
+#variables containing the verification status and names of the students
 stuQ1 = False
 stuQ2 = False
 stuQ3 = False
@@ -332,6 +446,34 @@ studentName2Label = tkinter.Label(window, text="Placeholder 2")
 studentName3Label = tkinter.Label(window, text="Placeholder 3")
 studentName4Label = tkinter.Label(window, text="Placeholder 4")
 studentName5Label = tkinter.Label(window, text="Placeholder 5")
+
+coursesNameLabel = tkinter.Label(window, text="Courses")
+courseQButton1 = tkinter.Button(window, text="Qualify", bg="blue", fg="white", command=courseQButton1)
+courseDQButton1 = tkinter.Button(window, text="Disqualify", bg="red", fg="white", command=courseDQButton1)
+courseQButton2 = tkinter.Button(window, text="Qualify", bg="blue", fg="white", command=courseQButton2)
+courseDQButton2 = tkinter.Button(window, text="Disqualify", bg="red", fg="white", command=courseDQButton2)
+courseQButton3 = tkinter.Button(window, text="Qualify", bg="blue", fg="white", command=courseQButton3)
+courseDQButton3 = tkinter.Button(window, text="Disqualify", bg="red", fg="white", command=courseDQButton3)
+courseQButton4 = tkinter.Button(window, text="Qualify", bg="blue", fg="white", command=courseQButton4)
+courseDQButton4 = tkinter.Button(window, text="Disqualify", bg="red", fg="white", command=courseDQButton4)
+courseQButton5 = tkinter.Button(window, text="Qualify", bg="blue", fg="white", command=courseQButton5)
+courseDQButton5 = tkinter.Button(window, text="Disqualify", bg="red", fg="white", command=courseDQButton5)
+#variables containing the teaching status, qualification status, and names of the courses
+isTeachingC1 = True
+isTeachingC2 = True
+isTeachingC3 = True
+isTeachingC4 = True
+isTeachingC5 = True
+courseQ1 = True
+courseQ2 = True
+courseQ3 = True
+courseQ4 = True
+courseQ5 = True
+courseName1Label = tkinter.Label(window, text="Course 1")
+courseName2Label = tkinter.Label(window, text="Course 2")
+courseName3Label = tkinter.Label(window, text="Course 3")
+courseName4Label = tkinter.Label(window, text="Course 4")
+courseName5Label = tkinter.Label(window, text="Course 5")
 
 email = Entry(window) #this is the variable containing the email field
 emaillabel = tkinter.Label(window, text="Email:")
