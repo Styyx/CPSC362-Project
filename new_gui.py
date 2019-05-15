@@ -128,6 +128,7 @@ def stuLogin():
     #ideally we have some login verification programmed here
     #if the email and password fields are correct we continue to execute the code
     #if not we DO NOT execute the following code
+    #We must now also set the doesStuQual variable, along with if they're taking course1~5, and or have checked out book for those courses
     studentSplash.pack_forget()
     emaillabel.pack_forget()
     email.pack_forget()
@@ -135,8 +136,75 @@ def stuLogin():
     password.pack_forget()
     stuLoginBtn.pack_forget()
     stuCancelBtn.pack_forget()
-    stuPg.pack()
-    stuLogoutBtn.pack()
+    stuPg.grid(row=0, column=0)
+    stuLogoutBtn.grid(row=0, column=3)
+    coursesNameLabel.grid(row=1, column=0)
+    bookNameLabel.grid(row=1, column=1)
+    qualStatusLabel.grid(row=1, column=2)
+    courseName1Label.grid(row=2,column=0)
+    courseName2Label.grid(row=3,column=0)
+    courseName3Label.grid(row=4,column=0)
+    courseName4Label.grid(row=5,column=0)
+    courseName5Label.grid(row=6,column=0)
+    bookName1Label.grid(row=2,column=1)
+    bookName2Label.grid(row=3,column=1)
+    bookName3Label.grid(row=4,column=1)
+    bookName4Label.grid(row=5,column=1)
+    bookName5Label.grid(row=6,column=1)
+    if courseQ1 == True:
+        courseQualifies1.grid(row=2, column=2)
+        if doesStuQual == True:
+            if isTakingC1 == True:
+                if book1CheckedOut == True:
+                    book1CIn.grid(row=2, column=4)
+                else:
+                    book1COut.grid(row=2, column=3)
+    elif courseQ1 == False:
+        courseNotQualifies1.grid(row=2, column=2)
+
+    if courseQ2 == True:
+        courseQualifies2.grid(row=3, column=2)
+        if doesStuQual == True:
+            if isTakingC2 == True:
+                if book2CheckedOut == True:
+                    book2CIn.grid(row=3, column=4)
+                else:
+                    book2COut.grid(row=3, column=3)
+    elif courseQ2 == False:
+        courseNotQualifies2.grid(row=3, column=2)
+
+    if courseQ3 == True:
+        courseQualifies3.grid(row=4, column=2)
+        if doesStuQual == True:
+            if isTakingC3 == True:
+                if book3CheckedOut == True:
+                    book3CIn.grid(row=4, column=4)
+                else:
+                    book3COut.grid(row=4, column=3)
+    elif courseQ3 == False:
+        courseNotQualifies3.grid(row=4, column=2)
+
+    if courseQ4 == True:
+        courseQualifies4.grid(row=5, column=2)
+        if doesStuQual == True:
+            if isTakingC4 == True:
+                if book4CheckedOut == True:
+                    book4CIn.grid(row=5, column=4)
+                else:
+                    book4Cout.grid(row=5, column=3)
+    elif courseQ4 == False:
+        courseNotQualifies4.grid(row=5, column=2)
+
+    if courseQ5 == True:
+        courseQualifies5.grid(row=6, column=2)
+        if doesStuQual == True:
+            if isTakingC5 == True:
+                if book5CheckedOut == True:
+                    book5CIn.grid(row=6, column=4)
+                else:
+                    book5COut.grid(row=6, column=3)
+    elif courseQ5 == False:
+        courseNotQualifies5.grid(row=6, column=2)
 
 def teaLogin():
     #ideally we have some login verification programmed here
@@ -225,8 +293,52 @@ def adminLogin():
         stuQButton5.grid(row=6, column=1)
 
 def stuLogout():
-    stuPg.pack_forget()
-    stuLogoutBtn.pack_forget()
+    stuPg.grid_forget()
+    stuLogoutBtn.grid_forget()
+    coursesNameLabel.grid_forget()
+    bookNameLabel.grid_forget()
+    qualStatusLabel.grid_forget()
+    courseName1Label.grid_forget()
+    courseName2Label.grid_forget()
+    courseName3Label.grid_forget()
+    courseName4Label.grid_forget()
+    courseName5Label.grid_forget()
+    bookName1Label.grid_forget()
+    bookName2Label.grid_forget()
+    bookName3Label.grid_forget()
+    bookName4Label.grid_forget()
+    bookName5Label.grid_forget()
+    courseQualifies1.grid_forget()
+    courseNotQualifies1.grid_forget()
+    courseQualifies2.grid_forget()
+    courseNotQualifies2.grid_forget()
+    courseQualifies3.grid_forget()
+    courseNotQualifies3.grid_forget()
+    courseQualifies4.grid_forget()
+    courseNotQualifies4.grid_forget()
+    courseQualifies5.grid_forget()
+    courseNotQualifies5.grid_forget()
+    book1COut.grid_forget()
+    book1CIn.grid_forget()
+    book2COut.grid_forget()
+    book2CIn.grid_forget()
+    book3COut.grid_forget()
+    book3CIn.grid_forget()
+    book4COut.grid_forget()
+    book4CIn.grid_forget()
+    book5COut.grid_forget()
+    book5CIn.grid_forget()
+    doesStuQual = False
+    isTakingC1 = False
+    isTakingC2 = False
+    isTakingC3 = False
+    isTakingC4 = False
+    isTakingC5 = False
+    book1CheckedOut = False
+    book2CheckedOut = False
+    book3CheckedOut = False
+    book4CheckedOut = False
+    book5CheckedOut = False
     studentSplash.pack()
     emaillabel.pack()
     email.pack()
@@ -254,6 +366,11 @@ def teaLogout():
     courseDQButton4.grid_forget()
     courseQButton5.grid_forget()
     courseDQButton5.grid_forget()
+    isTeachingC1 = False
+    isTeachingC2 = False
+    isTeachingC3 = False
+    isTeachingC4 = False
+    isTeachingC5 = False
     teacherSplash.pack()
     emaillabel.pack()
     email.pack()
@@ -340,55 +457,104 @@ def stuDQButton5():
     stuQButton5.grid(row=6, column=1)
 
 def courseQButton1():
-    #needs an SQL statement the qualifies the first course for the program
+    #needs an SQL statement the qualifies the first course from the program
     courseQButton1.grid_forget()
     courseDQButton1.grid(row=2, column=2)
 
 def courseDQButton1():
-    #needs an SQL statement the disqualifies the first course for the program
+    #needs an SQL statement the disqualifies the first course from the program
     courseDQButton1.grid_forget()
     courseQButton1.grid(row=2, column=1)
 
 def courseQButton2():
-    #needs an SQL statement the qualifies the second course for the program
+    #needs an SQL statement the qualifies the second course from the program
     courseQButton2.grid_forget()
     courseDQButton2.grid(row=3, column=2)
 
 def courseDQButton2():
-    #needs an SQL statement the disqualifies the second course for the program
+    #needs an SQL statement the disqualifies the second course from the program
     courseDQButton2.grid_forget()
     courseQButton2.grid(row=3, column=1)
 
 def courseQButton3():
-    #needs an SQL statement the qualifies the third course for the program
+    #needs an SQL statement the qualifies the third course from the program
     courseQButton3.grid_forget()
     courseDQButton3.grid(row=4, column=2)
 
 def courseDQButton3():
-    #needs an SQL statement the disqualifies the third course for the program
+    #needs an SQL statement the disqualifies the third course from the program
     courseDQButton3.grid_forget()
     courseQButton3.grid(row=4, column=1)
 
 def courseQButton4():
-    #needs an SQL statement the qualifies the fourth course for the program
+    #needs an SQL statement the qualifies the fourth course from the program
     courseQButton4.grid_forget()
     courseDQButton4.grid(row=5, column=2)
 
 def courseDQButton4():
-    #needs an SQL statement the disqualifies the fourth course for the program
+    #needs an SQL statement the disqualifies the fourth course from the program
     courseDQButton4.grid_forget()
     courseQButton4.grid(row=5, column=1)
 
 def courseQButton5():
-    #needs an SQL statement the qualifies the fifth course for the program
+    #needs an SQL statement the qualifies the fifth course from the program
     courseQButton5.grid_forget()
     courseDQButton5.grid(row=6, column=2)
 
 def courseDQButton5():
-    #needs an SQL statement the disqualifies the fifth course for the program
+    #needs an SQL statement the disqualifies the fifth course from the program
     courseDQButton5.grid_forget()
     courseQButton5.grid(row=6, column=1)
-    
+
+def book1CIn():
+    #needs an SQL statement that checks in book 1 for the student logged in
+    book1CIn.grid_forget()
+    book1COut.grid(row=2, column=3)
+
+def book1COut():
+    #needs an SQL statement that checks out book 1 for the student logged in
+    book1COut.grid_forget()
+    book1CIn.grid(row=2, column=4)
+
+def book2CIn():
+    #needs an SQL statement that checks in book 2 for the student logged in
+    book2CIn.grid_forget()
+    book2COut.grid(row=3, column=3)
+
+def book2COut():
+    #needs an SQL statement that checks out book 2 for the student logged in
+    book2COut.grid_forget()
+    book2CIn.grid(row=3, column=4)
+
+def book3CIn():
+    #needs an SQL statement that checks in book 3 for the student logged in
+    book3CIn.grid_forget()
+    book3COut.grid(row=4, column=3)
+
+def book3COut():
+    #needs an SQL statement that checks out book 3 for the student logged in
+    book3COut.grid_forget()
+    book3CIn.grid(row=4, column=4)
+
+def book4CIn():
+    #needs an SQL statement that checks in book 4 for the student logged in
+    book4CIn.grid_forget()
+    book4COut.grid(row=5, column=3)
+
+def book4COut():
+    #needs an SQL statement that checks out book 4 for the student logged in
+    book4COut.grid_forget()
+    book4CIn.grid(row=5, column=4)
+
+def book5CIn():
+    #needs an SQL statement that checks in book 5 for the student logged in
+    book5CIn.grid_forget()
+    book5COut.grid(row=6, column=3)
+
+def book5COut():
+    #needs an SQL statement that checks out book 5 for the student logged in
+    book5COut.grid_forget()
+    book5CIn.grid(row=6, column=4)
 
 #this is the function that will contain the logic for registering a Student, feel free to delete the print statement, I just put it there so the module would run during my testing
 def regStu():
@@ -401,7 +567,8 @@ def regTea():
 
 window = tkinter.Tk()
 window.geometry("1000x500")
-#the following buttons need logic assigned to them, stuLoginBtn, teaLoginBtn, adminLoginBtn regStuBtn, and regTeaBtn
+#the following buttons need logic assigned to them, stuLoginBtn, teaLoginBtn, adminLoginBtn regStuBtn, regTeaBtn,
+#all the stuD/QBtn(s), all the courseD/QBtn(s), and all the bookCIn/OutBtn(s) 
 
 stuLoginPgBtn = tkinter.Button(window, text="Student Login", bg="red", fg="white", command=stuLoginPg)
 teaLoginPgBtn = tkinter.Button(window, text="Teacher Login", bg="green", fg="black", command=teaLoginPg)
@@ -435,7 +602,7 @@ stuQButton4 = tkinter.Button(window, text="Qualify", bg="blue", fg="white", comm
 stuDQButton4 = tkinter.Button(window, text="Disqualify", bg="red", fg="white", command=stuDQButton4)
 stuQButton5 = tkinter.Button(window, text="Qualify", bg="blue", fg="white", command=stuQButton5)
 stuDQButton5 = tkinter.Button(window, text="Disqualify", bg="red", fg="white", command=stuDQButton5)
-#variables containing the verification status and names of the students
+#variables containing the verification status and names of the students USED ONLY FOR THE ADMIN PAGE
 stuQ1 = False
 stuQ2 = False
 stuQ3 = False
@@ -447,7 +614,7 @@ studentName3Label = tkinter.Label(window, text="Placeholder 3")
 studentName4Label = tkinter.Label(window, text="Placeholder 4")
 studentName5Label = tkinter.Label(window, text="Placeholder 5")
 
-coursesNameLabel = tkinter.Label(window, text="Courses")
+coursesNameLabel = tkinter.Label(window, text="Course Name")
 courseQButton1 = tkinter.Button(window, text="Qualify", bg="blue", fg="white", command=courseQButton1)
 courseDQButton1 = tkinter.Button(window, text="Disqualify", bg="red", fg="white", command=courseDQButton1)
 courseQButton2 = tkinter.Button(window, text="Qualify", bg="blue", fg="white", command=courseQButton2)
@@ -459,21 +626,61 @@ courseDQButton4 = tkinter.Button(window, text="Disqualify", bg="red", fg="white"
 courseQButton5 = tkinter.Button(window, text="Qualify", bg="blue", fg="white", command=courseQButton5)
 courseDQButton5 = tkinter.Button(window, text="Disqualify", bg="red", fg="white", command=courseDQButton5)
 #variables containing the teaching status, qualification status, and names of the courses
-isTeachingC1 = True
-isTeachingC2 = True
-isTeachingC3 = True
-isTeachingC4 = True
-isTeachingC5 = True
-courseQ1 = True
-courseQ2 = True
-courseQ3 = True
-courseQ4 = True
-courseQ5 = True
+isTeachingC1 = False
+isTeachingC2 = False
+isTeachingC3 = False
+isTeachingC4 = False
+isTeachingC5 = False
+courseQ1 = False
+courseQ2 = False
+courseQ3 = False
+courseQ4 = False
+courseQ5 = False
 courseName1Label = tkinter.Label(window, text="Course 1")
 courseName2Label = tkinter.Label(window, text="Course 2")
 courseName3Label = tkinter.Label(window, text="Course 3")
 courseName4Label = tkinter.Label(window, text="Course 4")
 courseName5Label = tkinter.Label(window, text="Course 5")
+
+bookNameLabel = tkinter.Label(window, text="Book Name")
+qualStatusLabel = tkinter.Label(window, text="Course Qualification")
+courseQualifies1 = tkinter.Label(window, text="Qualifies!", bg="blue", fg="white")
+courseNotQualifies1 = tkinter.Label(window, text="Doesn't Qualify!", bg="red", fg="white")
+courseQualifies2 = tkinter.Label(window, text="Qualifies!", bg="blue", fg="white")
+courseNotQualifies2 = tkinter.Label(window, text="Doesn't Qualify!", bg="red", fg="white")
+courseQualifies3 = tkinter.Label(window, text="Qualifies!", bg="blue", fg="white")
+courseNotQualifies3 = tkinter.Label(window, text="Doesn't Qualify!", bg="red", fg="white")
+courseQualifies4 = tkinter.Label(window, text="Qualifies!", bg="blue", fg="white")
+courseNotQualifies4 = tkinter.Label(window, text="Doesn't Qualify!", bg="red", fg="white")
+courseQualifies5 = tkinter.Label(window, text="Qualifies!", bg="blue", fg="white")
+courseNotQualifies5 = tkinter.Label(window, text="Doesn't Qualify!", bg="red", fg="white")
+book1COut = tkinter.Button(window, text="Check Out", bg="blue", fg="white", command=book1COut)
+book1CIn = tkinter.Button(window, text="Check In", bg="red", fg="white", command=book1CIn)
+book2COut = tkinter.Button(window, text="Check Out", bg="blue", fg="white", command=book2COut)
+book2CIn = tkinter.Button(window, text="Check In", bg="red", fg="white", command=book2CIn)
+book3COut = tkinter.Button(window, text="Check Out", bg="blue", fg="white", command=book3COut)
+book3CIn = tkinter.Button(window, text="Check In", bg="red", fg="white", command=book3CIn)
+book4COut = tkinter.Button(window, text="Check Out", bg="blue", fg="white", command=book4COut)
+book4CIn = tkinter.Button(window, text="Check In", bg="red", fg="white", command=book4CIn)
+book5COut = tkinter.Button(window, text="Check Out", bg="blue", fg="white", command=book5COut)
+book5CIn = tkinter.Button(window, text="Check In", bg="red", fg="white", command=book5CIn)
+#variables containing the student's qualification status, if they're taking course 1~5, and if they've checked out the book from course 1~5
+doesStuQual = False
+isTakingC1 = False
+isTakingC2 = False
+isTakingC3 = False
+isTakingC4 = False
+isTakingC5 = False
+book1CheckedOut = False
+book2CheckedOut = False
+book3CheckedOut = False
+book4CheckedOut = False
+book5CheckedOut = False
+bookName1Label = tkinter.Label(window, text="Book 1")
+bookName2Label = tkinter.Label(window, text="Book 2")
+bookName3Label = tkinter.Label(window, text="Book 3")
+bookName4Label = tkinter.Label(window, text="Book 4")
+bookName5Label = tkinter.Label(window, text="Book 5")
 
 email = Entry(window) #this is the variable containing the email field
 emaillabel = tkinter.Label(window, text="Email:")
